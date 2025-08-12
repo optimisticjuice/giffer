@@ -1,0 +1,273 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #0f1225;
+  color: #e7e8ff;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  padding: 1rem;
+}
+
+/* Container */
+.giffer {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #141739;
+  border: 1px solid #262a59;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* Header - centered search bar */
+.gf-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Search container */
+.gf-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Search input */
+.ctrl {
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  border: 2px solid #2d3270;
+  background: #0e1030;
+  color: #e7e8ff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+}
+
+.ctrl:focus {
+  border-color: #4250ff;
+  box-shadow: 0 0 0 3px rgba(66, 80, 255, 0.2);
+}
+
+.ctrl.small {
+  max-width: 100px;
+  text-align: center;
+}
+
+/* Main content area */
+.gf-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+/* Card container */
+.card {
+  width: 100%;
+  max-width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0f1230;
+  border: 1px solid #2a2f6e;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 120ms ease;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* GIF styling */
+.gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Actions row */
+.actions {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 40rem;
+  padding: 0 1rem;
+}
+
+.btn {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 50%;
+  background: #161a47;
+  color: #e7e8ff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn.primary {
+  background: #4cd964;
+  color: white;
+}
+
+.btn.ghost {
+  background: #ff3b5c;
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Results section */
+.results {
+  width: 100%;
+  max-width: 40rem;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  background: #10133a;
+  border: 1px solid #222661;
+  border-radius: 15px;
+}
+
+.bucket {
+  margin-bottom: 1.5rem;
+}
+
+.bucket h3 {
+  color: #e7e8ff;
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.thumb {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #2a2f6e;
+  transition: transform 0.2s ease;
+}
+
+.thumb:hover {
+  transform: scale(1.05);
+  border-color: #4250ff;
+}
+
+/* Utility classes */
+.hint {
+  color: #a0a8d0;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin: 1rem 0;
+  max-width: 40rem;
+  width: 100%;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+  width: 100%;
+  max-width: 40rem;
+  background: rgba(15, 18, 48, 0.5);
+  border-radius: 15px;
+  color: #a0a8d0;
+  font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    height: 35rem;
+  }
+  
+  .actions {
+    gap: 1.5rem;
+  }
+  
+  .btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .ctrl {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+.stat-label{
+    display: inline;
+}
+.stat-value{
+    display: inline;
+}
+.labelI1{
+    display: inline;
+}
+.labelI2{
+    display: inline;
+}       
