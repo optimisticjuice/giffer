@@ -28,8 +28,7 @@ export default function Giffer({ apiKey }) {
 
   // ---------- Refs (imperative handles) ----------
   const cardRef = useRef(null);                // current "card" DOM node (for transform feedback)
-  const dragStartXRef = useRef(null);          // swipe: initial X on pointer down
-  const dragDeltaRef = useRef(0);              // swipe: current delta
+                // swipe: current delta
 
   // ---------- Side-effect: fetch when the parent-provided endpoint changes ----------
   useEffect(() => {
@@ -90,33 +89,6 @@ export default function Giffer({ apiKey }) {
     setIdx((n) => n + 1); // advance deck pointer (top-of-stack pop)
   }
 
-  // ---------- Lightweight swipe (no external libs; refs hold mutable gesture state) ----------
-  function onPointerDown(e) {
-    dragStartXRef.current = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
-    dragDeltaRef.current = 0;
-  }
-  function onPointerMove(e) {
-    if (dragStartXRef.current == null) return;
-    const x = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
-    dragDeltaRef.current = x - dragStartXRef.current;
-
-    // Imperative micro-animation for feedback (safe via ref; not in React state)
-    if (cardRef.current) {
-      cardRef.current.style.transform = `translateX(${dragDeltaRef.current * 0.5}px) rotate(${dragDeltaRef.current * 0.02}deg)`;
-    }
-  }
-  function onPointerUp() {
-    const delta = dragDeltaRef.current || 0;
-
-    // Thresholds → simple "business rules" for swipe gesture
-    if (delta > 80) handleVote("like");
-    else if (delta < -80) handleVote("dislike");
-
-    // Reset transform (imperative revert)
-    if (cardRef.current) cardRef.current.style.transform = "translateX(0) rotate(0)";
-    dragStartXRef.current = null;
-    dragDeltaRef.current = 0;
-  }
 
   // ---------- Render ----------
   return (
@@ -148,12 +120,6 @@ export default function Giffer({ apiKey }) {
           <div
             className="card"
             ref={cardRef}
-            onMouseDown={onPointerDown}
-            onMouseMove={onPointerMove}
-            onMouseUp={onPointerUp}
-            onTouchStart={onPointerDown}
-            onTouchMove={onPointerMove}
-            onTouchEnd={onPointerUp}
           >
             {/* Flex centered media, responsive via max-width */}
             <img className="gif" src={current.preview} alt={current.title} />
