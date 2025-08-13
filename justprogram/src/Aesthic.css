@@ -4,8 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* Explain to me the difference between using border-box and content-box ?  */
 /* Root layout */
+html{
+    font-size: 62.5%;
+}
+
 .app {
   min-height: 100vh;
   display: flex;
@@ -44,7 +48,7 @@
 .gf-controls {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: center  ;
   width: 100%;
   max-width: 800px;
 }
@@ -86,8 +90,8 @@
 /* Card container */
 .card {
   width: 100%;
-  max-width: 20rem;
-  height: 20rem;
+  max-width: 35rem;
+  height: 35rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,8 +125,8 @@
 }
 
 .btn {
-  width: 4rem;
-  height: 4rem;
+  width: 7rem;
+  height: 7rem;
   border: none;
   border-radius: 50%;
   background: #161a47;
@@ -139,11 +143,13 @@
 .btn.primary {
   background: #4cd964;
   color: white;
+  font-size: 2.5rem;
 }
 
 .btn.ghost {
   background: #ff3b5c;
   color: white;
+  font-size: 2.5rem;
 }
 
 .btn:hover {
@@ -157,8 +163,11 @@
 
 /* Results section */
 .results {
-  width: 100%;
-  max-width: 40rem;
+  /* The width of the results section is set to 100% to take up the full width
+     of its parent container, and the max-width is set to 40rem (640px) to
+     prevent it from becoming too wide. */
+     width: 100%;
+     max-width: 35rem;
   margin: 2rem auto 0;
   padding: 1.5rem;
   background: #10133a;
@@ -207,7 +216,7 @@
 }
 
 .error {
-  color: #ff6b6b;
+  color: #f11212;
   background: rgba(255, 107, 107, 0.1);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -255,9 +264,16 @@
   }
   
   .ctrl {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
   }
+}
+.stat{
+    margin-left: 4vw;
+    font-size: 2rem;
+    
+
+
 }
 .stat-label{
     display: inline;
@@ -271,3 +287,10 @@
 .labelI2{
     display: inline;
 }       
+
+.gf-sidebar{
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    margin-left: -4vw;
+}

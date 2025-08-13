@@ -25,7 +25,7 @@ export default function Giffer({ apiKey }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-
+//! [[ALERT]] How do I update the main gif just like I did the liked and disliked gifs? This feature doesn't work especially after search! HELP.
   // ---------- Side-effect: fetch when the parent-provided endpoint changes ----------
   useEffect(() => {
     if (!apiKey || typeof apiKey !== "string") {
@@ -68,7 +68,7 @@ export default function Giffer({ apiKey }) {
 
     fetchDeck();
     return () => {
-      ignore = true;            // cancel state updates on unmount or prop change
+      ignore = true;
     };
   }, [apiKey]);                 // 🔁 re-run whenever App.jsx changes q/limit/key in the URL
 
@@ -80,7 +80,9 @@ export default function Giffer({ apiKey }) {
     if (!current) return; // no-op when deck exhausted
 
     if (kind === "like") setLiked((prev) => [...prev, current]);
+    //? how does the gifs get placed  in the setLiked place and how does the setDisliked place the gifs
     else setDisliked((prev) => [...prev, current]);
+    //? so is the current 'the current' gif the one that is being liked or disliked?
 
     setIdx((n) => n + 1); // advance deck pointer (top-of-stack pop)
   }
