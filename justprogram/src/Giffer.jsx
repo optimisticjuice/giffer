@@ -1,4 +1,4 @@
-// Giffer.jsx
+    // Giffer.jsx
 import { useEffect, useRef, useState } from "react";
 import "./Aesthic.css";
 
