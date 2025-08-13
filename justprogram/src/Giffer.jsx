@@ -13,7 +13,6 @@ import "./Aesthic.css";
  * - Treat `apiKey` as the fully-formed endpoint (includes key, query, limit).
  * - Fetch whenever that prop changes (prop-driven data flow).
  * - Keep local UI state here (deck index, liked/disliked).
- * - Use useRef for DOM-ish, imperative bits (card transform + swipe detection).
  *
  * Hooks used: useState, useEffect, useRef (✅ matches your constraints)
  */
@@ -26,9 +25,6 @@ export default function Giffer({ apiKey }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // ---------- Refs (imperative handles) ----------
-  const cardRef = useRef(null);                // current "card" DOM node (for transform feedback)
-                // swipe: current delta
 
   // ---------- Side-effect: fetch when the parent-provided endpoint changes ----------
   useEffect(() => {
@@ -119,7 +115,6 @@ export default function Giffer({ apiKey }) {
         {current ? (
           <div
             className="card"
-            ref={cardRef}
           >
             {/* Flex centered media, responsive via max-width */}
             <img className="gif" src={current.preview} alt={current.title} />
